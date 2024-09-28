@@ -1,0 +1,48 @@
+﻿@using System.Security.Claims;
+@model IEnumerable<User>;
+@{
+    ViewData["Title"] = "User Registry";
+}
+
+<div class="text-center">
+   
+    <div class="gap-4 d-flex mb-4">
+        <button class="btn btn-warning" id="block-users-btn" value="Blocked">
+            <i class="bi bi-lock"></i>
+            Block
+          
+        </button>
+        <button class="btn btn-warning" id="unblock-users-btn" value="Active">
+            <i class="bi bi-unlock"></i>
+        </button>
+        <button class="btn btn-danger" id="delete-users-btn">
+            <i class="bi bi-trash"></i>
+        </button>
+    </div>
+
+    <table class="table table-hover table-bordered" id="user-data-table">
+        <thead>
+            <tr class="header">
+                <th>
+                    <i id="select-all-icon" class="bi bi-plus-square" role="button"></i>
+                </th>
+                <th>Name</th>
+                <th>e-Mail</th>
+                <th>Last Login</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td><input type="checkbox" name="selectedUser" id="selectedUser" value="@user.Id" /></td>
+                    <td>@user.Name</td>
+                    <td>@user.Email</td>
+                    <td>@user.LastLogin.ToString("HH:mm:ss, d MMM yyyy")</td>
+                    <td>@user.Status</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

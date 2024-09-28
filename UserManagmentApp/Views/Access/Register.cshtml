@@ -1,0 +1,49 @@
+﻿@model UserManagmentApp.ViewModels.UserVM;
+@{
+    Layout = null;
+}
+
+<html >
+    <head>
+        <title>Register</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    </head>
+    <body>
+
+        <div class="row mt-5 justify-content-center">
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-header">
+                        Register
+                    </div>
+                    <div class="card-body">
+                    <form asp-action="Register" asp-controller="Access" method="post">
+                            <input class="form-control mb-3" type="text" placeholder="Name" required asp-for="Name"/>
+                            <input class="form-control mb-3" type="email" placeholder="johndoe@email.com" required asp-for="Email"/>
+                            <input class="form-control mb-3" type="password" placeholder="Password" required asp-for="Password"/>
+                            <input class="form-control mb-3" type="password" placeholder="Confirm Password" required asp-for="ConfirmPassword"/>
+                            <div class="d-grid gap-2 mb-3">
+                                <button class="btn btn-primary" type="submit">
+                                    Register
+                                </button>
+                            </div>
+
+                        @if (ViewData["Message"] != null)
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                @ViewData["Message"]
+                            </div>
+                        }
+                        Already have an account? <a asp-controller="Access" asp-action="Login">Login</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
